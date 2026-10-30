@@ -1,0 +1,41 @@
+# Reference of every config section with its default value (smoke scale).
+# Configs hold data only: no commands, no keys. Keys come from release.key_file
+# or the environment variable named in release.key_env.
+run:
+  kind: smoke                 # smoke | reference-protocol | real-data
+  out_dir: outputs/run
+  log_level: INFO
+stages: [e1, tables]          # subset of e1, e2, sensitivity, e4, tables, plots, real
+e1:                           # E1/E3
+  seeds: [0]
+  runs: {W1: 40, W2: 50, W3: 20}
+  configs: null               # null = all configurations of experiments/configurations.py CONFIGS
+  workloads: null             # null = W1, W2, W3
+e2:                           # E2
+  seeds: [0]
+  n_runs: 250                 # below ~250 runs the attack classifier has too few labelled runs to split
+  eps_grid: [0.1, 1.0]
+  delta_grid: [60.0, 900.0]
+  configs: null
+  w1_runs: 40
+  dictionary: true
+sensitivity:                  # E2 sensitivity run
+  seeds: [0]
+  n_runs: 250
+e4:                           # E4
+  sizes: [20000, 50000]
+  workers: [1, 2]
+  workloads: [W2]
+  reps: 1
+  tag: smoke
+  cache: null                 # null = <out_dir>/results/cache (delete after the run)
+tables:
+  table3_seeds: [0]
+data:
+  root: null                  # real traces (stage 'real'), see docs/data_format.md
+release:                      # stage 'real' only
+  key_file: null
+  key_env: PROVPUB_RELEASE_KEY
+  write_release: true
+  attacks: true
+  operators: {ops: [VG, TC, BS, DPN], delta: 60.0, eps: 1.0, unit: bucket, memo: true, sampler: exact}

@@ -1,0 +1,7 @@
+# Reference protocol for E1/E3: seeds 0-4, about 1e5 PROV
+# records per release. On a 2-vCPU VM this took about 3 minutes.
+# results/e1_*.csv and results/e3_*.csv were produced by this configuration.
+run: {kind: reference-protocol, out_dir: outputs/e1_e3, log_level: INFO}
+stages: [e1, tables]
+e1: {seeds: [0, 1, 2, 3, 4], runs: {W1: 720, W2: 1000, W3: 430}, configs: null, workloads: null}
+tables: {table3_seeds: [0, 1, 2, 3, 4]}

@@ -1,0 +1,19 @@
+# Template for a real-data run (planned experiment E5). Copy, edit paths, then:
+#   export PROVPUB_RELEASE_KEY=...   (or set release.key_file; never put the key here)
+#   python scripts/run_experiment.py --config configs/experiment_template.yaml --stage real
+run: {kind: real-data, out_dir: outputs/real_run, log_level: INFO}
+stages: [real]
+data:
+  root: /path/to/real_traces       # layout in docs/data_format.md
+release:
+  key_file: null
+  key_env: PROVPUB_RELEASE_KEY
+  write_release: true
+  attacks: true                    # A1 only, and only if truth/ files exist
+  operators:
+    ops: [VG, TC, BS, DPN]
+    delta: 60.0
+    eps: 1.0
+    unit: bucket                   # record | bucket | suppress
+    memo: true                     # true = partition scope; group = input-set scope; false = fresh
+    sampler: exact                 # exact (recommended) | inversion (as in the reference runs)

@@ -1,0 +1,9 @@
+# Synthetic smoke test of every stage. Output is labelled
+# "synthetic smoke-test output, not a reference result".
+run: {kind: smoke, out_dir: outputs/synthetic_demo, log_level: INFO}
+stages: [e1, e2, sensitivity, e4, tables, plots]
+e1: {seeds: [0], runs: {W1: 40, W2: 50, W3: 20}}
+e2: {seeds: [0, 1], n_runs: 250, eps_grid: [0.1, 1.0], delta_grid: [60.0, 900.0], w1_runs: 40}
+sensitivity: {seeds: [0], n_runs: 250}
+e4: {sizes: [20000, 50000], workers: [1, 2], workloads: [W2], reps: 2, tag: smoke}
+tables: {table3_seeds: [0]}

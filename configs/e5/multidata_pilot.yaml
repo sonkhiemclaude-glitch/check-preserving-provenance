@@ -1,0 +1,14 @@
+# Readiness gate for the 500-trace W2-style extension: 2 live + 1 replay per dataset.
+# Replay reuses recorded model decisions and re-executes tools; no fresh inference.
+live_runs: 10
+sites_per_run: 7
+max_steps: 32
+data_seed: 42
+replica_every: 2
+operators:
+  ops: [VG, TC, BS, DPN]
+  delta: 60.0
+  eps: 1.0
+  unit: bucket
+  memo: true
+  sampler: exact

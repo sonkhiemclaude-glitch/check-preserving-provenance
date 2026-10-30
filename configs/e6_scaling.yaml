@@ -1,0 +1,12 @@
+# E6: many-core sanitisation scaling on a shared 32-core workstation.
+# Capped at 8 workers and run under nice so concurrent jobs on the host are not starved;
+# timings are therefore conservative. Same operators/key/data seed as E4.
+run: {kind: reference-protocol, out_dir: outputs/e6_scaling, log_level: INFO}
+stages: [e4, plots]
+e4:
+  sizes: [100000, 500000, 1000000, 2000000, 5000000]
+  workers: [1, 2, 4, 8]
+  workloads: [W2, W3]
+  reps: 3
+  tag: e6_scaling
+  cache: null

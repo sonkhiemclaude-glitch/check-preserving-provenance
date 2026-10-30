@@ -1,0 +1,16 @@
+# credentials and private run output
+.env
+*.env
+!.env.example
+private/
+runs/
+outputs/*
+!outputs/.gitkeep
+release_keys/
+# Python
+__pycache__/
+*.egg-info/
+.venv*/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/

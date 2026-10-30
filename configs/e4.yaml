@@ -1,0 +1,11 @@
+# Reference protocol for E4: W2 and W3, 1e5 to 2e6 records,
+# 1 and 2 workers, 3 repetitions. Needs several GB in the cache directory.
+run: {kind: reference-protocol, out_dir: outputs/e4, log_level: INFO}
+stages: [e4, plots]
+e4:
+  sizes: [100000, 250000, 500000, 1000000, 2000000]
+  workers: [1, 2]
+  workloads: [W2, W3]
+  reps: 3
+  tag: reference_protocol
+  cache: null

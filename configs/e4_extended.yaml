@@ -1,0 +1,11 @@
+# Extended E4 grid: more workers and larger sizes.
+# Times are machine dependent; record the machine with the results.
+run: {kind: reference-protocol, out_dir: outputs/e4_extended, log_level: INFO}
+stages: [e4, plots]
+e4:
+  sizes: [100000, 500000, 1000000, 2000000, 5000000]
+  workers: [1, 2, 4, 8, 16]
+  workloads: [W2, W3]
+  reps: 3
+  tag: extended
+  cache: null

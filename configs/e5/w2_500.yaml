@@ -1,0 +1,15 @@
+# W2-style extension only. W1 exploration and E5 attacks require separate protocols.
+# With five datasets this gives 80 live + 20 replay traces per dataset.
+# Target >= 1e5 actual PROV records; verify the measured volume after collection.
+live_runs: 400
+sites_per_run: 7
+max_steps: 32
+data_seed: 42
+replica_every: 4
+operators:
+  ops: [VG, TC, BS, DPN]
+  delta: 60.0
+  eps: 1.0
+  unit: bucket
+  memo: true
+  sampler: exact

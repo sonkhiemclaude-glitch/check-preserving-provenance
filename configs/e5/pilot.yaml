@@ -1,0 +1,14 @@
+# Two live executions and two replays of recorded LLM decisions with tool re-execution.
+# The replay runs are not fresh model inference. Credentials are read only from .env.
+live_runs: 2
+sites_per_run: 3
+max_steps: 16
+data_seed: 42
+replica_every: 1
+operators:
+  ops: [VG, TC, BS, DPN]
+  delta: 60.0
+  eps: 1.0
+  unit: bucket
+  memo: true
+  sampler: exact

@@ -1,0 +1,14 @@
+# Reference protocol for E2 and the sensitivity run.
+# About 45 minutes for E2 and 4 minutes for the sensitivity run on a 2-vCPU VM.
+run: {kind: reference-protocol, out_dir: outputs/e2, log_level: INFO}
+stages: [e2, sensitivity, tables, plots]
+e1: {runs: {W1: 720, W2: 1000, W3: 430}}
+e2:
+  seeds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  n_runs: 1500
+  eps_grid: [0.01, 0.03, 0.1, 0.3, 1.0, 3.0, 10.0]
+  delta_grid: [1.0, 10.0, 60.0, 300.0, 900.0, 3600.0]
+  configs: null
+  w1_runs: 720
+  dictionary: true
+sensitivity: {seeds: [0, 1, 2, 3, 4], n_runs: 1500}
